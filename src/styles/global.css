@@ -33,3 +33,7 @@ html {
 body {
   height: 100%;
 }
+fieldset.mui-jnltum-MuiOutlinedInput-notchedOutline{
+  border: 1px solid skyblue;
+  border-radius:9999px;
+}

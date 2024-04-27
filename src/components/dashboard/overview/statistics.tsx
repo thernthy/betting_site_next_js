@@ -10,7 +10,6 @@ import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Unstable_Grid2';
 import { alpha, useTheme } from '@mui/material/styles';
 import type { SxProps } from '@mui/material/styles';
-import { ArrowClockwise as ArrowClockwiseIcon } from '@phosphor-icons/react/dist/ssr/ArrowClockwise';
 import { ArrowRight as ArrowRightIcon } from '@phosphor-icons/react/dist/ssr/ArrowRight';
 import type { ApexOptions } from 'apexcharts';
 
@@ -45,40 +44,40 @@ export function StatisticAday({ sx }: SalesProps): React.JSX.Element {
       >
       </CardHeader>
       <CardContent className='flex flex-row  flex-wrap '>
-        <Grid lg={2} sm={6} xs={12}>
+        <Grid lg={3} sm={6} xs={12}>
             <DepositAmount diff={12} trend="up" sx={{ height: '100%' }} value="w24k" />
         </Grid>
-        <Grid lg={2} sm={6} xs={12}>
+        <Grid lg={3} sm={6} xs={12}>
             <WidthDrawal diff={12} trend="down" sx={{ height: '100%' }} value="w24k" />
         </Grid>
-        <Grid lg={2} sm={6} xs={12}>
+        <Grid lg={3} sm={6} xs={12}>
             <MemberDeposit diff={12} trend="up" sx={{ height: '100%' }} value="w24k" />
         </Grid>
-        <Grid lg={2} sm={6} xs={12}>
+        <Grid lg={3} sm={6} xs={12}>
             <MemberWithdrawal diff={16} trend="down" sx={{ height: '100%' }} value="1.6k" />
         </Grid>
-        <Grid lg={2} sm={6} xs={12}>
+        <Grid lg={3} sm={6} xs={12}>
             <DistributorDeposit diff={16} trend="up" sx={{ height: '100%' }} value="1.6k" />
         </Grid>
-        <Grid lg={2} sm={6} xs={12}>
+        <Grid lg={3} sm={6} xs={12}>
             <DistributorWithdrawal diff={16} trend="down" sx={{ height: '100%' }} value="1.6k" />
         </Grid>
-        <Grid lg={2} sm={6} xs={12}>
+        <Grid lg={3} sm={6} xs={12}>
             <TotalJudment diff={16} trend="down" sx={{ height: '100%' }} value="1.6k" />
         </Grid>
-        <Grid lg={2} sm={6} xs={12}>
+        <Grid lg={3} sm={6} xs={12}>
             <BetAmount diff={16} trend="down" sx={{ height: '100%' }} value="1.6k" />
         </Grid>
-        <Grid lg={2} sm={6} xs={12}>
+        <Grid lg={3} sm={6} xs={12}>
             <WarningAmount diff={16} trend="down" sx={{ height: '100%' }} value="1.6k" />
         </Grid>
-        <Grid lg={2} sm={6} xs={12}>
+        <Grid lg={3} sm={6} xs={12}>
             <BettingUser diff={16} trend="up" sx={{ height: '100%' }} value="1" />
         </Grid>
-        <Grid lg={2} sm={6} xs={12}>
+        <Grid lg={3} sm={6} xs={12}>
             <ResistredUser diff={16} trend="up" sx={{ height: '100%' }} value="1" />
         </Grid>
-        <Grid lg={2} sm={6} xs={12}>
+        <Grid lg={3} sm={6} xs={12}>
             <Visitors diff={16} trend="up" sx={{ height: '100%' }} value="5" />
         </Grid>
 

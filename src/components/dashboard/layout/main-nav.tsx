@@ -69,11 +69,11 @@ export function MainNav(): React.JSX.Element {
             >
               <ListIcon />
             </IconButton>
-            <Tooltip title="Search">
+            {/* <Tooltip title="Search">
               <IconButton>
                 <MagnifyingGlassIcon />
               </IconButton>
-            </Tooltip>
+            </Tooltip> */}
           </Stack>
             <div className=' px-2 text-sky-400 h-full  flex flex-row items-center  hover:text-white' onClick={haneleScrollLeft}><ArrowLeftIcon /></div>
             <ul className='flex relative flex-row whitespace-nowrap gap-4 overflow-x-auto snap-x snap-mandatory px-3' style={{scrollbarWidth:'none'}} ref={optoinWrapper}>
