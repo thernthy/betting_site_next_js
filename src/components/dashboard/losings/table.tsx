@@ -73,31 +73,32 @@ export function Losings({
                   }}
                 />
               </TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>번호</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>루트총판</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>상위총판</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>아이디</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}} rowSpan={2}>번호</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}} rowSpan={2}>루트총판</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}} rowSpan={2}>상위총판</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}} rowSpan={2}>아이디</TableCell>
               <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}} colSpan={10}>루징관련 정보</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>루징금</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>이전 루징금</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>이후 루징금</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>종류</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>정산타입</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>베팅시간</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>등록시간</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}} rowSpan={2}>루징금</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}} rowSpan={2}>이전 루징금</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}} rowSpan={2}>이후 루징금</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}} rowSpan={2}>종류</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}} rowSpan={2}>정산타입</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}} rowSpan={2}>베팅시간</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}} rowSpan={2}>등록시간</TableCell>
             </TableRow>
             <TableRow>
               <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>번호</TableCell>
               <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>루트총판</TableCell>
               <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>상위총판</TableCell>
               <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>아이디</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}} colSpan={10}>루징관련 정보</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>루징금</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>이전 루징금</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>이후 루징금</TableCell>
               <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>종류</TableCell>
               <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>정산타입</TableCell>
               <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>베팅시간</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>등록시간</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>등록시간</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>등록시간</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>등록시간</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>등록시간</TableCell>
               <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>등록시간</TableCell>
             </TableRow>
           </TableHead>
