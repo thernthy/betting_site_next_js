@@ -17,6 +17,7 @@ import Typography from '@mui/material/Typography';
 import dayjs from 'dayjs';
 import '@/styles/theme/scroll_bar_style/scroll_bar.css';
 import { useSelection } from '@/hooks/use-selection';
+import { StatusComponent } from '@/components/materinals_components/status_components/status_component';
 
 function noop(): void {
   // do nothing
@@ -39,7 +40,7 @@ interface CustomersTableProps {
   rowsPerPage?: number;
 }
 
-export function Losings({
+export function CalcListTable({
   count = 0,
   rows = [],
   page = 0,
@@ -60,7 +61,7 @@ export function Losings({
         <Table sx={{ minWidth: '100%' }}>
           <TableHead>
             <TableRow>
-              <TableCell padding="checkbox" rowSpan={2}>
+              <TableCell padding="checkbox">
                 <Checkbox
                   checked={selectedAll}
                   indeterminate={selectedSome}
@@ -75,29 +76,12 @@ export function Losings({
               </TableCell>
               <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>번호</TableCell>
               <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>루트총판</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>상위총판</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>총판아이디</TableCell>
               <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>아이디</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}} colSpan={10}>루징관련 정보</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>루징금</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>이전 루징금</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>이후 루징금</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>닉네임</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>이전쿠폰개수</TableCell>
+              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>지급쿠폰개수</TableCell>
               <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>종류</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>정산타입</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>베팅시간</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>등록시간</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>번호</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>루트총판</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>상위총판</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>아이디</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}} colSpan={10}>루징관련 정보</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>루징금</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>이전 루징금</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>이후 루징금</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>종류</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>정산타입</TableCell>
-              <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>베팅시간</TableCell>
               <TableCell className='whitespace-nowrap' sx={{textAlign:'center'}}>등록시간</TableCell>
             </TableRow>
           </TableHead>
@@ -122,21 +106,48 @@ export function Losings({
                   <TableCell className='whitespace-nowrap'>
                     <Stack sx={{ alignItems: 'center' }} direction="row" spacing={2}>
                       <Avatar src={row.avatar} />
-                      <Typography variant="subtitle2">{row.name}</Typography>
+                      <Typography variant="subtitle2">{row.name}<StatusComponent 
+                        Status_text={'Success'}
+                        tailwind_class_desing={['bg-green-400', 'text-white', 'rounded-full', 'px-2 py-1', 'ml-2']}
+                        text_size={10}
+                        /></Typography>
                     </Stack>
                   </TableCell>
+                  <TableCell className='whitespace-nowrap'>{row.email}
+                       <StatusComponent 
+                        Status_text={'warnning'}
+                        tailwind_class_desing={['bg-yellow-400', 'px-2', 'py-1', 'rounded-full', 'ml-2']}
+                        text_size={10} />
+                   </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.email}
+                    <StatusComponent 
+                        Status_text={'warnning'}
+                        tailwind_class_desing={['bg-sky-400', 'px-2', 'py-1', 'rounded-full', 'ml-2']}
+                        text_size={10} />
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.email}
+                    <StatusComponent 
+                        Status_text={'sky'}
+                        tailwind_class_desing={['bg-blue-400', 'px-2', 'py-1', 'ml-2', 'rounded-full', 'text-white']}
+                        text_size={10} />
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.email}
+                    <StatusComponent 
+                        Status_text={'warnning'}
+                        tailwind_class_desing={['bg-blue-500', 'px-2', 'py-1', 'ml-2', 'rounded-full', 'text-white']}
+                        text_size={10} />
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.email}
+                    <StatusComponent 
+                        Status_text={'warnning'}
+                        tailwind_class_desing={['bg-sky-500', 'px-2', 'py-1', 'ml-2', 'rounded-full', 'text-white']}
+                        text_size={10} />
+                  </TableCell>
                   <TableCell className='whitespace-nowrap'>{row.email}</TableCell>
-                  <TableCell className='whitespace-nowrap'>{row.email}</TableCell>
-                  <TableCell className='whitespace-nowrap'>{row.email}</TableCell>
-                  <TableCell className='whitespace-nowrap'>{row.email}</TableCell>
-                  <TableCell className='whitespace-nowrap'>{row.email}</TableCell>
-                  <TableCell className='whitespace-nowrap'>{row.email}</TableCell>
-                  <TableCell className='whitespace-nowrap'>{row.email}</TableCell>
-                  <TableCell className='whitespace-nowrap'>{row.email}</TableCell>
-                  <TableCell className='whitespace-nowrap'>{row.email}</TableCell>
-                  <TableCell className='whitespace-nowrap'>{row.email}</TableCell>
-                  <TableCell className='whitespace-nowrap'>{row.email}</TableCell>
-
                   <TableCell className='whitespace-nowrap'>
                     {row.address.city}, {row.address.state}, {row.address.country}
                   </TableCell>

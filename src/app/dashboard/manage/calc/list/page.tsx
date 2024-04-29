@@ -13,8 +13,8 @@ import { SearchComponent } from '@/components/materinals_components/search';
 import MultipleSelect from '@/components/materinals_components/selection_component';
 import { UserName } from '@/db/selectionData' 
 import RenderCategory from '@/components/materinals_components/category_render';
-import { PintsTable } from '@/components/dashboard/points/table';
 import {Customers} from '@/db/Demo_user';
+import { CalcListTable } from '@/components/dashboard/list/table';
 
 export default function Page(): React.JSX.Element {
     const page = 0;
@@ -25,16 +25,13 @@ export default function Page(): React.JSX.Element {
     const handleSiteChage = (sit_id:number) => {
         setSiteTartget(sit_id)
     }
-
   const handleCategoryChage = (category_id:Number) => {
      setCategoryTarget(category_id)
   }
-
   const pagtTitle = filterPathName(currentPaht)
   React.useEffect(() => {
     document.title = `${pagtTitle}`;
   }, [pagtTitle]); 
-  
 
   const paginatedCustomers = applyPagination(Customers, page, rowsPerPage);
   return (
@@ -66,7 +63,7 @@ export default function Page(): React.JSX.Element {
             </div>
             <SearchComponent />
         </div>
-        <PintsTable         
+        <CalcListTable         
             count={paginatedCustomers.length}
             page={page}
             rows={paginatedCustomers}
