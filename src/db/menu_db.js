@@ -66,9 +66,9 @@ export const Menues = [
                 submenu_title:'관리자',
                 submenu_icon:<UserCircleGearIcon className='text-1xl text-white' />,
                 subMenu_list:[
-                    { menue_list_id:25, menue_list_title: '관리자 리스트', menue_list_path: `${paths.dashboard.manage}/list`,},
-                    { menue_list_id:26, menue_list_title: '관리자 접속현황', menue_list_path: `${paths.dashboard.manage}/online`,},
-                    { menue_list_id:27, menue_list_title: '관리자 로그', menue_list_path: `${paths.dashboard.manage}/log`,},
+                    { menue_list_id:25, menue_list_title: '관리자 리스트', menue_list_path: `${paths.dashboard.manage.manage}/list`,},
+                    { menue_list_id:26, menue_list_title: '관리자 접속현황', menue_list_path: `${paths.dashboard.manage.manage}/online`,},
+                    { menue_list_id:27, menue_list_title: '관리자 로그', menue_list_path: `${paths.dashboard.manage.manage}/log`,},
                 ]
             },
             {   id:6,
