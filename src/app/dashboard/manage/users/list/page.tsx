@@ -11,7 +11,6 @@ import { siteData } from '../../../../../db/siteData'
 import { SearchComponent } from '@/components/materinals_components/search';
 import GameSelection from '@/components/dashboard/partner_detail/game_selection';
 import { GameCategory } from '@/db/game_category';
-import { DetailPartner } from '@/db/partner_detail';
 import { UserList } from './table';
 import type { UsersListInterface } from './table';
 import { UsersListData } from './users_data';
