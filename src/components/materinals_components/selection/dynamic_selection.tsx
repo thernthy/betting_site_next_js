@@ -11,23 +11,24 @@ export interface DynamicSelectionDataProp{
 
 
 export const  DynamicSelection = ({slectionData, seleted_data}:DynamicSelectionDataProp) => {
-  const [selectedLevel, setSeletedLevel] = React.useState<string>('select_level')
-  const handleChange = () =>{
-    return alert('notings!')
-  }
+  const [selectedLevel, setSeletedLevel] = React.useState<string>(seleted_data ? seleted_data :'select_level')
+  const handleChange = (event: SelectChangeEvent) => {
+    setSeletedLevel(event.target.value as string);
+  };
   return (
     <div>
     <FormControl variant="standard" sx={{ m: 1, minWidth: 120, padding:'0' }}>
-        <InputLabel id="demo-simple-select-standard-label">Level</InputLabel>
+        {/* <InputLabel id="demo-simple-select-standard-label">Level</InputLabel> */}
         <Select
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
-          value={selectedLevel}
+          value={selectedLevel ? selectedLevel : ''}
           onChange={handleChange}
           label="Level"
+          
         >{slectionData?.map((level, index:number)=>{
             return (
-                <MenuItem value={level.selection_id} key={index} >
+                <MenuItem value={level.selection_title} key={index}>
                     <em>{level.selection_title}</em>
                 </MenuItem>
             )

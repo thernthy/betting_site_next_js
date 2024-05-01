@@ -13,11 +13,14 @@ import dayjs from 'dayjs';
 import '@/styles/theme/scroll_bar_style/scroll_bar.css';
 import { StatusComponent } from '@/components/materinals_components/status_components/status_component';
 import { DynamicSelection } from '@/components/materinals_components/selection/dynamic_selection';
+import SwitchComponent from './switch_button';
 
 function noop(): void {
-  // do nothing
+  return alert('notings')
 }
-
+function onRowsPerPageChange():void{
+  return alert('notings')
+}
 export interface UsersListInterface {
   site:string;
   root_distributor:string;
@@ -70,14 +73,29 @@ export function UserList({
   rowsPerPage = 0,
   tableHeader = []
 }: CashPartnerList): React.JSX.Element {
-  
-  const  renderSiteNumber = (rows:any) => {
-      return rows.map((site:any, index:number) => {
-       return `${site.site}/`
-      })
-  }
+  const noop = () => {}; // A function that does nothing
+
+  const handleChangePage = () => {
+     return alert('notting!')
+  };
+
+  // const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setRowsPerPage(parseInt(event.target.value, 10));
+  //   setPage(0);
+  // };
+
   return (
     <div>
+      <TablePagination
+        component="div"
+        count={1212}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={onRowsPerPageChange}
+        page={page}
+        rowsPerPage={rowsPerPage}
+        rowsPerPageOptions={[5, 50, 100, 150, 200, 500, 1000, 10000]}
+      />
+      <Divider />
       <Box sx={{ overflowX: 'auto' }}  className='overview_table'>
         <Table sx={{ minWidth: '100%' }}>
           <TableHead>
@@ -111,6 +129,39 @@ export function UserList({
               <TableCell className='whitespace-nowrap'>
                   Sum
               </TableCell>
+              <TableCell className='whitespace-nowrap'>
+                  Sum
+              </TableCell>
+              <TableCell className='whitespace-nowrap'>
+                  Sum
+              </TableCell>
+              <TableCell className='whitespace-nowrap'>
+                  Sum
+              </TableCell>
+              <TableCell className='whitespace-nowrap'>
+                  Sum
+              </TableCell>
+              <TableCell className='whitespace-nowrap'>
+                  Sum
+              </TableCell>
+              <TableCell className='whitespace-nowrap'>
+                  Sum
+              </TableCell>
+              <TableCell className='whitespace-nowrap'>
+                  Sum
+              </TableCell>
+              <TableCell className='whitespace-nowrap'>
+                  Sum
+              </TableCell>
+              <TableCell className='whitespace-nowrap'>
+                  Sum
+              </TableCell>
+              <TableCell className='whitespace-nowrap'>
+                  Sum
+              </TableCell>
+              <TableCell className='whitespace-nowrap'>
+                 {sumRollingGold(rows)}
+              </TableCell>
             </TableRow>
             {rows.map((row, index) => {
               return (
@@ -126,12 +177,101 @@ export function UserList({
                       <StatusComponent Status_text={row.NinameColor} 
                         bgColorName={`${row.NinameColor}`}
                         tailwind_class_desing={[
-                          'px-2 py-1 rounded-full text-white'
+                          'px-2 py-1.5 rounded-full text-white'
                           
                           ]}/>
                   </TableCell>
                   <TableCell className='whitespace-nowrap'>
                     <DynamicSelection seleted_data={`${row.level[0]}`} slectionData={[{selection_id:1, selection_title:'level_1'}, {selection_id:2, selection_title:'level_2'}]} />
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.account_holder}
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    <DynamicSelection 
+                      seleted_data={`${row.membership_type}`}
+                      slectionData={[
+                          {selection_id:1, selection_title:'common'}, 
+                          {selection_id:2, selection_title:'test'},
+                          {selection_id:3, selection_title:'interest'},
+                          {selection_id:4, selection_title:'work'},
+                        ]} />
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    <StatusComponent 
+                      Status_text={row.situtuation} 
+                      tailwind_class_desing={[
+                        'px-3 py-1.5 text-white',
+                        `${row.situtuation === 'nomal'?'bg-sky-400':'bg-sky-500'}`
+                      ]} />
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    <StatusComponent 
+                      Status_text={row.entry_exit}
+                      tailwind_class_desing={[
+                        'px-3 py-1.5 text-white', 
+                        'bg-blue-600',
+
+                        ]} />
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.amount_held.toLocaleString('en-Us')}
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.point.toLocaleString('en-Us')}
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {renderRollingRate(row.rolling_rate)}
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.roolling_gold}
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.fine}
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.deposit.toLocaleString('en-Us')}
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.withdraw.toLocaleString('en-Us')}
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.entry_Exit.toLocaleString('en-Us')}
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.bet.toLocaleString('en-Us')}
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.winning.toLocaleString('en-Us')}
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.be_dang.toLocaleString('en-Us')}
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.access_date}
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.connection_ip}
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.latest_deposit_date}
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.date_of_subcription}
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.withdrawl_date}
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    {row.function.map((element, index:number)=>{
+                      return <StatusComponent key={index} Status_text={element} tailwind_class_desing={['px-2 py-1.5 text-white mx-1 rounded-md', 'bg-red-400']} />
+                    })}
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap'>
+                    <SwitchComponent />
+                  </TableCell>
+                  <TableCell className='whitespace-nowrap text-center'>
+                     {row.Completely_delete? <StatusComponent Status_text={'complatedly deleted'} tailwind_class_desing={['text-red-400']} />:'-'}
                   </TableCell>
                 </TableRow>
               );
@@ -139,16 +279,27 @@ export function UserList({
           </TableBody>
         </Table>
       </Box>
-      <Divider />
-      <TablePagination
-        component="div"
-        count={count}
-        onPageChange={noop}
-        onRowsPerPageChange={noop}
-        page={page}
-        rowsPerPage={rowsPerPage}
-        rowsPerPageOptions={[5, 10, 25]}
-      />
+
     </div>
   );
+}
+
+//render rolling in this formate 0/0/0/0/0
+const renderRollingRate = (rollingRates:number[]) => {
+  const rollingRate = rollingRates.map((rolling) => {
+    return `${rolling}`
+  })
+  return rollingRate.join('/')
+}
+
+//render site on summery row if there many site 
+const  renderSiteNumber = (rows:any) => {
+  const uniqueSites = new Set(rows.map((site: any) => site.site));
+  const uniqueSiteArray = Array.from(uniqueSites);
+  return uniqueSiteArray.join(',');
+}
+// sum rolling gold 
+const sumRollingGold = (rows:any[]) => {
+  const totalGold = rows.reduce((prev, current)=>{return prev.roolling_gold + + current.roolling_gold});
+  return totalGold;
 }

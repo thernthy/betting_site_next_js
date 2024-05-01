@@ -2,7 +2,7 @@ import type { UsersListInterface } from './table';
 
 export const UsersListData = [
     {
-        site:'site 1',
+        site:'site1',
         root_distributor:'user_site1_1',
         top_distributor:'user_site1_1',
         id:1,
@@ -16,7 +16,7 @@ export const UsersListData = [
         amount_held:10009,
         point:9999,
         rolling_rate:[0,0,0,0,0,0],
-        roolling_gold:0,
+        roolling_gold:11,
         fine:0,
         deposit:29999,
         withdraw:99999,
@@ -34,7 +34,7 @@ export const UsersListData = [
         Completely_delete:true
     },
     {
-        site:'site 1',
+        site:'site2',
         root_distributor:'user_site1_2',
         top_distributor:'user_site1_2',
         id:2,
@@ -48,7 +48,7 @@ export const UsersListData = [
         amount_held:10009,
         point:9999,
         rolling_rate:[0,0,0,0,0,0],
-        roolling_gold:0,
+        roolling_gold:10,
         fine:0,
         deposit:29999,
         withdraw:99999,

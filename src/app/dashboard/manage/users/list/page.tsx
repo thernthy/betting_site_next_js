@@ -14,6 +14,8 @@ import { GameCategory } from '@/db/game_category';
 import { UserList } from './table';
 import type { UsersListInterface } from './table';
 import { UsersListData } from './users_data';
+import { MuiltipleUsersLayer } from '@/db/multiple_layer_users';
+import SelectionLayer from '@/components/materinals_components/selection/muiltiple_selection_layer';
 export default function Page(): React.JSX.Element {
     const page = 0;
     const rowsPerPage = 5;
@@ -38,11 +40,14 @@ export default function Page(): React.JSX.Element {
         // If the category doesn't exist, add it to the selected_categories array
         setSelected_categories(prevSelectedCategories => [...prevSelectedCategories, selected_category]);
     }
-}
+  }
+  const onSelectUser = (id:string) => {
+    
+  }
   const paginatedCustomers = applyPagination(UsersListData, page, rowsPerPage);
   return (
     <Grid container spacing={3} lg={12}>
-      <Card>
+      <Card className='h-full'>
         <div className='p-2 py-3 border border-1 border-t-0 border-x-0 border-sky-400'>
             <h2>{pagtTitle}</h2>
         </div>
@@ -50,6 +55,7 @@ export default function Page(): React.JSX.Element {
             <SiteRender siteDatas={siteData} shadow={false} acitve={siteTarget} handleSiteChange={handleSiteChage} />
         </div>
         <div className='p-2 flex flex-row items-center justify-center flex-wrap lg:flex-nowrap lg:justify-start gap-3 mt-2 lg:ml-2'>
+           <SelectionLayer data={MuiltipleUsersLayer} onSelect={onSelectUser} />
             <div className='flex flex-row items-center justify-around gap-2'>
                 <div >
                  <PartnerRollingDatePicker />

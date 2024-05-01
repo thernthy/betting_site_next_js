@@ -55,6 +55,7 @@ export function PartnerDetailTable({
   const { selectAll, deselectAll, selectOne, deselectOne, selected } = useSelection(rowIds);
   const selectedSome = (selected?.size ?? 0) > 0 && (selected?.size ?? 0) < rows.length;
   const selectedAll = rows.length > 0 && selected?.size === rows.length;
+  
   const renderNestedTable = (users:any, parentRowId: string) => {
     if (!visibleRows[parentRowId]) {
         return null; // If nested table is not visible, return null to hide it
