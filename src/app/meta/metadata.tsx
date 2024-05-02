@@ -19,5 +19,5 @@ export function filterPathName(currentPath: string) {
         });
     });
 
-   return (`${config.site.url}|Dashboard|${pathDection}|${pageTitle}`)
+   return (`Dashboard|${pathDection}|${pageTitle}`)
 }

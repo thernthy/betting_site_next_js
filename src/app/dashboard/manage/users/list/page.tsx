@@ -9,13 +9,15 @@ import { PartnerRollingDatePicker } from '@/components/dashboard/manage_cp/rolli
 import { SiteRender } from '@/components/materinals_components/site_render_gination';
 import { siteData } from '../../../../../db/siteData'
 import { SearchComponent } from '@/components/materinals_components/search';
-import GameSelection from '@/components/dashboard/partner_detail/game_selection';
-import { GameCategory } from '@/db/game_category';
 import { UserList } from './table';
 import type { UsersListInterface } from './table';
 import { UsersListData } from './users_data';
 import { MuiltipleUsersLayer } from '@/db/multiple_layer_users';
 import SelectionLayer from '@/components/materinals_components/selection/muiltiple_selection_layer';
+import { ColorSelection } from '@/components/materinals_components/selection/color_selection';
+import { DynamicSelection } from '@/components/materinals_components/selection/dynamic_selection';
+import { ColorsData } from './colorsData';
+
 export default function Page(): React.JSX.Element {
     const page = 0;
     const rowsPerPage = 5;
@@ -54,8 +56,10 @@ export default function Page(): React.JSX.Element {
         <div className='mt-3'>
             <SiteRender siteDatas={siteData} shadow={false} acitve={siteTarget} handleSiteChange={handleSiteChage} />
         </div>
-        <div className='p-2 flex flex-row items-center justify-center flex-wrap lg:flex-nowrap lg:justify-start gap-3 mt-2 lg:ml-2'>
+        <div className='p-2 flex flex-row items-end justify-center flex-wrap lg:flex-nowrap lg:justify-start gap-3 mt-2 lg:ml-2'>
            <SelectionLayer data={MuiltipleUsersLayer} onSelect={onSelectUser} />
+           <ColorSelection slectionData={ColorsData} seleted_data={'red'} />
+           <DynamicSelection seleted_data='level_2' slectionData={[{selection_id:1, selection_title:'level_1'}, {selection_id:2, selection_title:'level_2'}]} />
             <div className='flex flex-row items-center justify-around gap-2'>
                 <div >
                  <PartnerRollingDatePicker />
@@ -66,9 +70,6 @@ export default function Page(): React.JSX.Element {
                 </div>
             </div>
             <SearchComponent />
-            <div>
-              <GameSelection games_category={GameCategory} selected_category={selected_categories} handleSelection={handleSelection} />
-            </div>
         </div>
         <UserList          
             count={paginatedCustomers.length}

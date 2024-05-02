@@ -64,7 +64,7 @@ const SelectionLayer = ({ data, onSelect }:SelectionProps) => {
   };
 
   return (
-    <FormControl variant="standard" sx={{ m: 1,  minWidth: 120, padding:'0', position:'relative'}}>
+    <FormControl variant="standard" sx={{ mx: 1,  minWidth: 120, padding:'0', position:'relative'}}>
       <MenuItem value={selectedValue} onClick={selctionDataHandling} sx={{borderBottom:'1px solid rgb(56 189 248)'}}>
         {selectedValue}
         <IconButton 
