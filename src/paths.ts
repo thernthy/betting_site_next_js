@@ -15,7 +15,7 @@ export const paths = {
       cash:`${mainPath}${managePath}/cash`, 
       partner:`${mainPath}${managePath}/partners`, 
       users:`${mainPath}${managePath}/users`,
-      manage:`${mainPath}${managePath}`
+      manage:`${mainPath}${managePath}/manager`
     }
   },
   errors: { notFound: '/errors/not-found' },
