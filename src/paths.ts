@@ -9,6 +9,7 @@ export const paths = {
     account: '/dashboard/account',
     customers: '/dashboard/customers',
     integrations: '/dashboard/integrations',
+    // settings: '/dashboard/settings',
     settings: '/dashboard/settings',
     manage: {
       calc:`${mainPath}${managePath}/calc`, 
@@ -17,6 +18,7 @@ export const paths = {
       users:`${mainPath}${managePath}/users`,
       manage:`${mainPath}${managePath}/manager`
     }
+    // setting
   },
   errors: { notFound: '/errors/not-found' },
 } as const;

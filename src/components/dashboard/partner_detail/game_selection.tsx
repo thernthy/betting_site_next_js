@@ -18,7 +18,7 @@ export interface GamCategoryPropInterface{
 }
 export default function GameSelection({games_category, selected_category, handleSelection}:GamCategoryPropInterface){
     return (
-        <ul className='flex flex-row items-center gap-2 text-sm'>
+        <ul className='flex flex-row items-center gap-1 text-sm'>
             {games_category.map((game, index) => {
                 const isSelected = selected_category.some(selected => selected.category_id === game.category_id);
                 const className = isSelected ? 'border border-1 border-sky-400 text-black' : 'bg-sky-500 text-white';
