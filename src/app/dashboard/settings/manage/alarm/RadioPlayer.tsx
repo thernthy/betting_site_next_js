@@ -22,7 +22,8 @@ const SoundPlay: React.FC<SoundPlayProps> = ({ url }) => {
   };
 
   return (
-      <Grid container spacing={2} alignItems="center">
+    <>
+      {/* <Grid container spacing={2} alignItems="center">
         <Grid item>
           <IconButton onClick={handlePlayPause}>
             {playing ? <Pause /> : <PlayArrow />}
@@ -37,7 +38,23 @@ const SoundPlay: React.FC<SoundPlayProps> = ({ url }) => {
         <Grid item xs>
           <Slider value={volume} min={0} max={1} step={0.01} onChange={handleVolumeChange} aria-labelledby="continuous-slider" />
         </Grid>
-      </Grid>
+      </Grid> */}
+      <div className='flex flex-row items-center justify-around gap-1 bg-gray-100 rounded-full px-2 py-1.5'>
+        <div className='bg-sky-600 rounded-full text-white'>
+          <IconButton onClick={handlePlayPause}>{playing ? <Pause /> : <PlayArrow />}
+          </IconButton>
+        </div>
+        <div>
+          0:22/0:30
+        </div>
+        <div className='w-2/5 mx-3 flex flex-row items-center'>
+          <Slider value={volume} min={0} max={1} step={0.01} onChange={handleVolumeChange} aria-labelledby="continuous-slider" />
+        </div>
+        <div className=''>
+           <VolumeUp />
+        </div>
+      </div>
+    </>
   );
 };
 
