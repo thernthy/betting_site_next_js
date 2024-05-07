@@ -1,12 +1,12 @@
 
 
 import React, { useState } from 'react';
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player';
 import { IconButton, Slider, Grid, Typography } from '@mui/material/';
 import { PlayArrow, Pause, VolumeUp } from '@mui/icons-material/';
 
 interface SoundPlayProps {
-  url: string; // URL of the sound file
+  url?: string; // URL of the sound file
 }
 
 const SoundPlay: React.FC<SoundPlayProps> = ({ url }) => {
@@ -22,7 +22,6 @@ const SoundPlay: React.FC<SoundPlayProps> = ({ url }) => {
   };
 
   return (
-    <div>
       <Grid container spacing={2} alignItems="center">
         <Grid item>
           <IconButton onClick={handlePlayPause}>
@@ -30,7 +29,7 @@ const SoundPlay: React.FC<SoundPlayProps> = ({ url }) => {
           </IconButton>
         </Grid>
         <Grid item xs>
-          <ReactPlayer url={url} playing={playing} volume={volume} />
+          <ReactPlayer url={url? url : ""} playing={playing} volume={volume} />
         </Grid>
         <Grid item>
           <VolumeUp />
@@ -39,7 +38,6 @@ const SoundPlay: React.FC<SoundPlayProps> = ({ url }) => {
           <Slider value={volume} min={0} max={1} step={0.01} onChange={handleVolumeChange} aria-labelledby="continuous-slider" />
         </Grid>
       </Grid>
-    </div>
   );
 };
 
