@@ -22,7 +22,8 @@ import PopUpModle from './Modecomponenet';
 import { SwitchButton } from '@/components/materinals_components/switchingbutton/switchButton';
 import AccessibleTable from './table';
 import SoundPlay from './RadioPlayer';
-
+import { SettingData } from './setting';
+import { Sounds } from './db/renderSound'
 
 const integrations = [
   {
@@ -109,52 +110,61 @@ export default function Page(): React.JSX.Element {
         <CardHeader title={pagtTitle} sx={{borderBottom:'1px solid gray'}}>
         </CardHeader>
         <CardContent>
-          <div className='flex flex-row items-center justify-end w-full gap-3 flex-wrap md:flex-nowrap mb-3'>
-              <div className='flex flex-row items-center justify-start gap-3 shadow-sm px-3 py-2 rounded-sm'>
-                  <div className='flex flex-row items-center justify-start gap-2 md:whitespace-nowrap'>
-                    관리자 허용IP 사용/사용안함
-                  <SwitchButton 
-                    onClick={()=>handleClick(1, `enable_disable_administrator_allowed_ip`, 'enable_disable_administrator_allowed_ip')} 
-                    switchState={switchState[`1_enable_disable_administrator_allowed_ip_enable_disable_administrator_allowed_ip`]} />
+          <div className='flex flex-row items-center justify-start w-full gap-3 flex-wrap md:flex-nowrap mb-3'>
+              <div className='flex flex-row items-center justify-start gap-3 shadow-md  px-3 py-2 rounded-md'>
+                  <div className='flex flex-row items-center justify-start gap-2 md:whitespace-nowrap'>                             
+                    알람횟수 제한	
+                    <input type='text' className='px-2 py-1.5 border border-1 border-sky-600 rounded-md' />
+                    <button className='px-3 py-1.5 bg-sky-600 rounded-sm text-white'>변경</button>
                   </div>
-                  <div className='flex flex-row items-center justify-start gap-2 md:whitespace-nowrap'>
-                    유저차단IP 사용/사용안함
-                    <SwitchButton 
-                    onClick={()=>handleClick(2, `user_block_ip_enable_disable`, 'user_block_ip_enable_disable')} 
-                    switchState={switchState[`2_user_block_ip_enable_disable_user_block_ip_enable_disable`]} />
-                  </div>
-              </div>
-              <div className='flex flex-row items-center justify-end w-full gap-3'>
-                <PopUpModle show_title={'관리자 허용IP 등록'} request_methode={'/administrator_allowed_ip_registration'} />
-                <PopUpModle show_title={'유저 차단IP 등록'} request_methode={'/register_blocked_user_ip'} />
               </div>
           </div>
-          <div>
-            <div className='filter-wrapper flex flex-col md:flex-row  items-center justify-start gap-2'>
-              <div className='flex flex-row items-center justify-start gap-2'>
-                <input type='text' placeholder='seach ip......' className='px-2 py-2 border-2 border-sky-400 rounded-full'/>
-                <div className='rounded-full py-2 px-2 bg-sky-600 text-white active:bg-sky-400 hover:bg-gray-300'>
-                  
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+            <div className='w-full shadow-md'>
+              <div className='px-2 py-1.5 bg-sky-700'><h2 className={' text-white'}>관리자 알람 설정</h2></div>
+              <div className='filter-wrapper flex flex-col md:flex-row  items-center justify-start gap-2  px-2 md:px-5 pt-2 pb-5'>
+                <div className='flex flex-row items-center justify-start gap-2 w-full'>
+                  <div className='flex flex-col items-start justify-start gap-2 pt-4 w-full'>
+                    {
+                      SettingData?.map((element:any, index:number) => {
+                        return(
+                          <div key={index} className='flex flex-row items-center justify-between gap-2 w-full'>
+                              <span>{element.name}</span>
+                              {index > 0  && index < 2?
+                                <div className='min-w-60 max-w-80'>
+                                  <SoundPlay url={`${new Audio(Sounds[1].soundPath)}`} />
+                                </div> :''
+                              }
+                              {index > 3  && index < 5?
+                                <div className='min-w-60 max-w-80'>
+                                  <SoundPlay url={`${new Audio(Sounds[2].soundPath)}`} />
+                                </div> :''
+                              }
+                              <div className='flex flex-row items-center justify-start gap-2'>
+                                <button className='px-2 py-1.5 bg-sky-600 rounded-lg text-white'>알람파일 설정</button>
+                                <button className='px-2 py-1.5 bg-red-400 rounded-lg text-white'>알람음 해제</button>
+                              </div>
+                          </div>
+                        )
+                      })
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className=' min-w-60 max-w-96 shadow-md'>
+              <div className=' px-2 py-1.5 bg-sky-700 '><h2 className={' text-white '}>회원페이지 알람 설정</h2></div>
+              <div className={` filter-wrapper flex flex-col md:flex-row  items-center justify-between gap-2 mt-4 px-2 py-3 `}>
+                <div className={` flex flex-row items-center justify-between gap-2 `}>
+                  <span className=' whitespace-nowrap'>관리자쪽지</span>
+                  <button className='whitespace-nowrap py-1.5 px-3 rounded-md text-white bg-sky-600'>알람파일 설정</button>
+                  <button className='whitespace-nowrap py-1.5 px-3 rounded-md text-white bg-red-500'>알람음 해제</button>
                 </div>
               </div>
             </div>
           </div>
-          <div className=' w-60'>
-            <SoundPlay />
-          </div>
         </CardContent>
       </Card>
-      <Grid container spacing={3}>
-        <AccessibleTable />
-        {/* {integrations.map((integration) => (
-          <Grid key={integration.id} lg={4} md={6} xs={12}>
-            <IntegrationCard integration={integration} />
-          </Grid>
-        ))} */}
-      </Grid>
-      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        <Pagination count={3} size="small" />
-      </Box>
     </Stack>
   );
 }
