@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { IconButton, Slider, Typography } from '@mui/material/';
 import { PlayArrow, Pause, VolumeUp } from '@mui/icons-material/';
 import ReactPlayer from 'react-player';
@@ -10,7 +10,6 @@ const SoundPlay: React.FC = () => {
   const [speed, setSpeed] = useState<number>(1.0);
   const [duration, setDuration] = useState<number>(0);
   const [played, setPlayed] = useState<number>(0);
-
   const playerRef = useRef<ReactPlayer | null>(null);
 
   const handlePlayPause = () => {
@@ -25,16 +24,12 @@ const SoundPlay: React.FC = () => {
     setSpeed(newValue as number);
   };
 
-  const handleDuration = (duration: number) => {
-    setDuration(duration);
+  const handleDuration = (durationInMilliseconds: number) => {
+    const durationInSeconds: number = parseFloat((durationInMilliseconds / 1000).toFixed(2)); // Convert to 2 decimal points
+    setDuration(durationInSeconds);
   };
 
-  const handleProgress = (state: any) => {
-    setPlayed(state.played);
-    if (duration && state.played === duration) {
-      setPlaying(false);
-    }
-  };
+
 
   const handleShshowingVolum = () => {
     setHandleValumShow(!handleValumShow);
@@ -54,15 +49,20 @@ const SoundPlay: React.FC = () => {
   const formatDuration = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = Math.floor(seconds % 60);
-    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+    const formattedSeconds = remainingSeconds < 10 ? `0${remainingSeconds}` : `${remainingSeconds}`;
+    return `${minutes}:${formattedSeconds}`;
+  };
+
+  const handleProgress = (state: any) => {
+    setPlayed(state.played);
+      const playetTime =  formatDuration(duration * played);
+      const curationTime = formatDuration(duration);
+      if(playetTime === curationTime){
+        setPlaying(false);
+      }
   };
   
-  const handleCovertMaxValue  = (number:number) => {
-    const minutes = Math.floor(number / 60);
-    const remainingSeconds = Math.floor(number % 60);
-    const value =  `${minutes}.${remainingSeconds.toString().padStart(2, '0')}`;
-    return parseFloat(value)
-  }
+
 
   return (
     <>
@@ -74,12 +74,11 @@ const SoundPlay: React.FC = () => {
           <Typography variant="body2">{duration ? `${formatDuration(duration * played)}/${formatDuration(duration)}` : "0:00/0:00"}</Typography> 
         </div>
         <div className='flex flex-row items-center delay-100 transition-all mr-5'>
-        {handleCovertMaxValue(duration)}
           <Slider
-            value={played}
-            min={0}
-            max={handleCovertMaxValue(duration) || 0}
-            step={0.01}
+            value={played * duration}
+            min={ 0 }
+            max={ duration }
+            step={ 0.1 }
             onChange={(event, value) => handleSeek(event, Number(value))}
             sx={{ color: 'rgb(2 132 199)' }}
             aria-labelledby="progress-slider"
@@ -108,7 +107,7 @@ const SoundPlay: React.FC = () => {
         url={'/assets/sound/airport-call-157168.mp3'}
         playing={playing}
         volume={volume}
-        playbackRate={speed}
+        
         onDuration={handleDuration}
         onProgress={handleProgress}
         muted={!playing} // Mute the player if not playing
